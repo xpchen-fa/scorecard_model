@@ -58,6 +58,9 @@ def plot_missing_user(df,plt_size=None):
     plt.ylabel('缺失变量个数')
     plt.xlabel('sanples')
     return plt.show()
+    
+
+
 
 
 # 缺失值剔除（单个变量）
@@ -75,6 +78,9 @@ def missing_delete_var(df,threshold=None):
     df2 = df2.drop(missing_col,axis=1)
     print('缺失率超过{}的变量个数为{}'.format(threshold,missing_col_num))
     return df2
+    
+    
+ 
 
 
 # 缺失值剔除（单个样本）
@@ -95,8 +101,27 @@ def missing_delete_user(df,threshold=None):
     df2 = df2[~(df2.index.isin(missing_index_list))]
     print('缺失变量个数在{}以上的用户数有{}个'.format(threshold,len(missing_index_list)))
     return df2
-
-
+    
+    
+ ## 缺失值删除（单个样本)
+ def missing_user_percent(df,percent=None):
+    """
+    df:数据集
+    percent:缺失率
+    """
+    missing_series  = df.isnull().sum(axis=1)/df.shape[1]
+    missing_series = pd.DataFrame(missing_series,columns=["missing_user_rate"])
+    ## 将用户缺失率超过90%的样本给去掉
+    missing_rate_90 = missing_series.loc[missing_series["missing_user_rate"] >= percent]
+    if missing_rate_90.shape[0] >0:
+        index = list(missing_rate_90.index)
+        for i in index:
+            df = df.drop(index=i,axis=1)
+            df = df.reset_index()
+    return df
+   
+    
+   
 # 缺失值填充（类别型变量）
 def fillna_cate_var(df,col_list,fill_type=None):
     """
@@ -167,6 +192,9 @@ def const_delete(df,col_list,threshold=None):
     df2 = df2.drop(const_col,axis=1)
     print('常变量/同值化处理的变量个数为{}'.format(len(const_col)))
     return df2
+
+
+
 
 
 # 分类型变量的降基处理
