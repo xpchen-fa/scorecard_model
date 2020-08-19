@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Jul 11 10:48:27 2018
-
-@author: XiaSiYang
-"""
 import numpy as np,math
 from math import log
 import pandas as pd,matplotlib,matplotlib.pyplot as plt
@@ -391,11 +386,10 @@ class Plot_vars:
                 col_group = self.nodis_group(col)
             else:
                 col_group = self.dis_group(col)
-        fix,ax1 = plt.subplots()
+        _,ax1 = plt.subplots()
         ax1.bar(x=list(col_group[col]),height=col_group['per'],width=0.6,align='center') #bar是柱形图
         for a,b in zip(col_group[col],col_group['per']):
-            ax1.text(a,b+0.005,'%.4f' %b,ha='center',va='bottom',fontsize=8) #给柱形图加上文字标示
-            
+            ax1.text(a,b+0.005,'%.4f' %b,ha='center',va='bottom',fontsize=8) #给柱形图加上文字标示    
         ax1.set_xlabel(col)
         ax1.set_ylabel('percent',fontsize=12)
         ax1.set_xlim([-2,max(col_group[col])+2]) #设置刻度长度
@@ -811,7 +805,7 @@ class BestBin:
         g3['good_sum'] = g3['count'] - g3['y_sum']
         g3['group'] = g3.index
         g3['PDVI'] = g3.index
-		g3.rename(columns={'group': 'id'},inplace=True)   # 此处是后来有问题增加的
+        g3.rename(columns={'group': 'id'},inplace=True)   # 此处是后来有问题增加的
         temp_cont = pd.merge(g3,temp_blimits,how='left',on='group') #得到分组统计的数据
         for i in range(Mbins):
             mx = temp_cont.loc[(temp_cont['group'] == i+1,'group')].values

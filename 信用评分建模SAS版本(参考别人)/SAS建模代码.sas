@@ -1,8 +1,3 @@
-/*********************************
-½¨Ä£´úÂë
-ÓôÇç
-20180404
-***********************************************/
 options mlogic mprint;
 OPTION VALIDVARNAME=ANY;
 option compress = yes;
