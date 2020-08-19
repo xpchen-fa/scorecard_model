@@ -27,17 +27,17 @@
 
 [信用评分建模python版本](./信用评分建模python版本(参考别人))
 
-1. [preprocess文件](./信用评分建模python版本(参考别人))
+1. [preprocess文件](./信用评分建模python版本(参考别人)/preprocess.py)
 
 > 主要是将建模相关的组件进行封装成class类
 
-2.  [modelBulid文件](./信用评分建模python版本(参考别人))
+2.  [modelBulid文件](./信用评分建模python版本(参考别人)/modelBuild.py)
 
 > 主要是介绍如何调用preprocess文件
 
 ## 信用评分建模SAS版本
 
-[信用评分建模SAS版本](./信用评分建模SAS版本(参考别人))
+[信用评分建模SAS版本](./信用评分建模SAS版本(参考别人)/SAS建模代码.sas)
 
 > 主要介绍利用SAS建立评分模型
 
